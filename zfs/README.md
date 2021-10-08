@@ -1,10 +1,18 @@
 # ZFS cheat sheet
 
+## Table of Contents
+
+* [Status of a pool](#Status-of-a-pool)
+* [How to add a drive to a ZFS mirror](#How-to-add-a-drive-to-a-ZFS-mirror)
+* [How to remove a drive from a pool](#How-to-remove-a-drive-from-a-pool)
+* [ZFS Data Scrubbing](#ZFS-Data-Scrubbing)
+* [Autoextend ZFS pool](#Autoextend-ZFS-pool)
+* [Change disk in ZFS](#Change-disk-in-ZFS)
+* [Links](#Links)
+
 [Status of a pool](#Status of a pool)
 
-## info
-
-### Status of a pool
+## Status of a pool
 
 ```bash
 zpool status -v 
@@ -15,7 +23,7 @@ zpool status -v rpool
 zpool status -vL rpool
 ```
 
-### How to add a drive to a ZFS mirror
+## How to add a drive to a ZFS mirror
 
 ```bash
 
@@ -35,7 +43,7 @@ zpool remove rpool /dev/sdb
 zpool detach rpool /dev/sdb
 ```
 
-### ZFS Data Scrubbing
+## ZFS Data Scrubbing
 
 ```bash
 # start
@@ -45,7 +53,7 @@ zpool scrub rpool
 zpool scrub -s rpool
 ```
 
-### Autoextend ZFS pool
+## Autoextend ZFS pool
 
 ```bash
 zpool set autoexpand=on rpool
@@ -57,13 +65,7 @@ zpool set autoexpand=off rpool
 zpool status
 ```
 
-### Scrub
-
-```bash
-zpool scrub rpool
-```
-
-### Change disk in ZFS
+## Change disk in ZFS
 
 ```bash
 #### sda
@@ -95,6 +97,6 @@ zpool replace rpool /dev/sdb2 /dev/sdb2
 zpool status -v
 ```
 
-### Links
+## Links
 
 <https://edmondscommerce.github.io/replacing-failed-drive-in-zfs-zpool-on-proxmox/>
