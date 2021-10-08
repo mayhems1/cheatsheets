@@ -1,5 +1,7 @@
 # ZFS cheat sheet
 
+[Status of a pool](#Status of a pool)
+
 ## info
 
 ### Status of a pool
