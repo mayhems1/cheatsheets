@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+* [ZFS Basic Terms](#zfs-basic-terms)
 * [Status of a pool](#status-of-a-pool)
 * [How to add a drive to a ZFS mirror](#how-to-add-a-drive-to-a-zfs-mirror)
 * [How to remove a drive from a pool](#how-to-remove-a-drive-from-a-pool)
@@ -9,6 +10,41 @@
 * [Autoextend ZFS pool](#autoextend-zfs-pool)
 * [Change disk in ZFS](#change-disk-in-zfs)
 * [Links](#links)
+
+## ZFS Basic Terms
+
+* **Volume** - block device
+* **File system** - standard POSIX FS layer
+* **Snapshot** - read-only copy of a FS
+* **Clone** - read-write copy of a FS
+* **Dataset** - any of the 4 terms above
+* **Pool** - logical set of vdevs
+* **VDev** - block storage (redundancy done here)
+
+Type of raid levels are supported in ZFS
+
+* Striped Vdev’s (RAID0)
+* Mirrored Vdev’s (RAID1)
+* Striped Mirrored Vdev’s (RAID10)
+* RAIDZ (RAID5-Single parity)
+* RAIDZ2 (RAID6-Double parity)
+* RAIDZ3 (Triple Parity)
+
+## Create a simple zpool
+
+```bash
+# Create
+zpool create szpool c1t3d0
+
+# To create a mirror zpool:
+zpool create mzpool mirror c1t5d0 c1t6d0
+
+# To Create a raidz zpool:
+zpool create rzpool raidz c1t2d0 c1t1d0 c1t8d0
+
+# If you want to create dataset with different mount point, use the following command.
+zpool create -m /export/zfs home c1t0d0
+```
 
 ## Status of a pool
 
@@ -19,6 +55,9 @@ zpool status -v rpool
 
 # with device name
 zpool status -vL rpool
+
+# List
+zpool list rpool
 ```
 
 ## How to add a drive to a ZFS mirror
@@ -98,3 +137,5 @@ zpool status -v
 ## Links
 
 * [Replacing Failed Drive in Zfs Zpool (on Proxmox)](https://edmondscommerce.github.io/replacing-failed-drive-in-zfs-zpool-on-proxmox/)
+* [Replacing ZFS system drives in Proxmox](https://www.oxcrag.net/2018/09/02/replacing-zfs-system-drives-in-proxmox/)
+* [ZFS: Tips and Tricks](https://pve.proxmox.com/wiki/ZFS:_Tips_and_Tricks#Replacing_a_failed_disk_in_the_root_pool)
