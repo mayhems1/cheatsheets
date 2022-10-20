@@ -2,15 +2,13 @@
 
 ## Table of Contents
 
-* [Status of a pool](#Status-of-a-pool)
-* [How to add a drive to a ZFS mirror](#How-to-add-a-drive-to-a-ZFS-mirror)
-* [How to remove a drive from a pool](#How-to-remove-a-drive-from-a-pool)
-* [ZFS Data Scrubbing](#ZFS-Data-Scrubbing)
-* [Autoextend ZFS pool](#Autoextend-ZFS-pool)
-* [Change disk in ZFS](#Change-disk-in-ZFS)
-* [Links](#Links)
-
-[Status of a pool](#Status of a pool)
+* [Status of a pool](#status-of-a-pool)
+* [How to add a drive to a ZFS mirror](#how-to-add-a-drive-to-a-zfs-mirror)
+* [How to remove a drive from a pool](#how-to-remove-a-drive-from-a-pool)
+* [ZFS Data Scrubbing](#zfs-data-scrubbing)
+* [Autoextend ZFS pool](#autoextend-zfs-pool)
+* [Change disk in ZFS](#change-disk-in-zfs)
+* [Links](#links)
 
 ## Status of a pool
 
@@ -68,8 +66,7 @@ zpool status
 ## Change disk in ZFS
 
 ```bash
-#### sda
-
+# Exmaple name of a disk is sda
 # Offline sda
 zpool status -v
 zpool offline rpool /dev/sda2
@@ -84,6 +81,7 @@ dd if=/dev/sdb1 of=/dev/sda1
 zpool replace rpool /dev/sda2 /dev/sda2
 zpool status -v
 
+# Exmaple name of a disk is sda
 # offline sdb
 zpool status -v
 zpool offline rpool /dev/sdb2
@@ -99,4 +97,4 @@ zpool status -v
 
 ## Links
 
-<https://edmondscommerce.github.io/replacing-failed-drive-in-zfs-zpool-on-proxmox/>
+* [Replacing Failed Drive in Zfs Zpool (on Proxmox)](https://edmondscommerce.github.io/replacing-failed-drive-in-zfs-zpool-on-proxmox/)
