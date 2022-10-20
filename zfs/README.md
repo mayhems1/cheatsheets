@@ -134,6 +134,31 @@ zpool replace rpool /dev/sdb2 /dev/sdb2
 zpool status -v
 ```
 
+## Statistics
+
+```bash
+arcstat
+```
+
+## Tune zfs_arc_min and zfs_arc_max
+
+```bash
+# Example for Proxmox
+
+# Runtime 
+# 8Gb
+echo "$[8 * 1024*1024*1024 - 1]" >/sys/module/zfs/parameters/zfs_arc_min
+echo "$[8 * 1024*1024*1024]" >/sys/module/zfs/parameters/zfs_arc_max
+
+# Permanent
+cat /etc/modprobe.d/zfs.conf
+options zfs zfs_arc_min=8589934591
+options zfs zfs_arc_max=8589934592
+
+# Update initramfs images
+update-initramfs -u
+```
+
 ## Links
 
 * [Replacing Failed Drive in Zfs Zpool (on Proxmox)](https://edmondscommerce.github.io/replacing-failed-drive-in-zfs-zpool-on-proxmox/)
