@@ -78,8 +78,12 @@ MegaCli -CfgClr -aALL
 MegaCli -CfgLdDel -LALL -aALL
 
 # create raid
+## Raid 5
 MegaCli -CfgLdAdd -r5 [64:0, 64:1, 64:2, 64:3] -a0
+## Raid 0
 MegaCli -CfgLdAdd -r0 [64:4,64:5,64:6,64:7] -a0
+
+megacli -CfgLdAdd -r0 [252:0] -a0
 
 # get disk location
 MegaCli -PDList -a0 | grep -e '^Enclosure Device ID:' -e '^Slot Number:'
