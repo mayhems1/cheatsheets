@@ -15,6 +15,43 @@ from information_schema.processlist;
 show status where variable_name = 'Max_used_connections';
 
 show session status;
+
+show variables like "max_connections";
+
+show global status like '%connection%';
+
+-- other example
+
+select count(host) from information_schema.processlist;
+
+show status where variable_name = 'threads_connected';
+
+select @@max_connections
+
+select id,
+       user,
+       host,
+       db,
+       command,
+       time,
+       state,
+       info
+from information_schema.processlist;
+```
+
+## Kill a session
+
+```sql
+SHOW PROCESSLIST;
+KILL 192;
+
+-- kill all open connections with a single command
+SELECT 
+CONCAT('KILL ', id, ';') 
+FROM INFORMATION_SCHEMA.PROCESSLIST 
+WHERE `User` = 'some_user' 
+AND `Host` = '192.168.1.1'
+AND `db` = 'my_db';
 ```
 
 ## Show grants
@@ -46,3 +83,6 @@ pt-show-grants --host localhost --user root --ask-pass
 - [MySQL show status - active or total connections?](https://stackoverflow.com/questions/7432241/mysql-show-status-active-or-total-connections)
 - [MySQL SHOW USERS? – How to List All MySQL Users and Privileges](https://dbadiaries.com/no-mysql-show-users-how-to-list-mysql-user-accounts-and-their-privileges)
 - [mysql: Show GRANTs for all users](https://dba.stackexchange.com/questions/23265/mysql-show-grants-for-all-users)
+- [How to kill MySQL connections](https://stackoverflow.com/questions/4932503/how-to-kill-mysql-connections)
+- [Getting current number of connections in mysql](https://dba.stackexchange.com/questions/270791/getting-current-number-of-connections-in-mysql)
+- [List sessions / active connections on MySQL server](https://dataedo.com/kb/query/mysql/list-database-sessions)
