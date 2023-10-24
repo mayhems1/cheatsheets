@@ -1,6 +1,7 @@
 # Configure vim
 
 ## For python
+
 ```bash
 echo filetype plugin indent on >> ~/.vimrc
 
@@ -11,4 +12,5 @@ setlocal shiftwidth=4
 setlocal textwidth=80
 setlocal smarttab
 setlocal expandtab
+EOF
 ```
