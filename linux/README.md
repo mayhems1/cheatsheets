@@ -4,3 +4,4 @@
 - [Linux disk scheduler](./linux_disk_scheduler.md)
 - [Linux mdadm RAID](./linux_mdadm.md)
 - [Linux journalctl](./linux_journalctl.md)
+- [Linux systemd](./linux_systemd.md)
