@@ -56,3 +56,11 @@ For example:
 13:30 - lunchtime_backup_of_dbs.bat
 
 23:30 - evening_backup_of_dbs.bat
+
+## Troubleshooting
+
+In case of problems and errors, you should refer to the log files in C:\scripts\logs
+
+The log files will indicate the time of launch, which task was started, and the log of the SQL script execution.
+
+A random number has been added to the name of backup files so that multiple backup copies can be created within one day.
