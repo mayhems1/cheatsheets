@@ -77,6 +77,19 @@ SELECT * FROM information_schema.user_privileges;
 pt-show-grants --host localhost --user root --ask-pass
 ```
 
+## Try to fix Mysql slave after relay log corrupted
+
+```sql
+show slave status\G
+-- error Relay log read failure: Could not parse relay log event entry. The possible reasons are: the master's binary log is corrupted (you can check this by running 'mysqlbinlog' on the binary log), the slave's relay log is corrupted (you can check this by running 'mysqlbinlog' on the relay log), a network problem, or a bug in the master's or slave's MySQL code. If you want to check the master's binary log or slave's relay log, you will be able to know their names by issuing 'SHOW SLAVE STATUS' on this slave
+-- status - Exec_Master_Log_Pos: 221245113
+slave stop;
+
+change master to master_log_file='LBMS-bin.000012',master_log_pos=221245113;
+start slave;
+
+```
+
 ## reference links
 
 - [List sessions / active connections on MySQL server](https://dataedo.com/kb/query/mysql/list-database-sessions)
@@ -86,3 +99,4 @@ pt-show-grants --host localhost --user root --ask-pass
 - [How to kill MySQL connections](https://stackoverflow.com/questions/4932503/how-to-kill-mysql-connections)
 - [Getting current number of connections in mysql](https://dba.stackexchange.com/questions/270791/getting-current-number-of-connections-in-mysql)
 - [List sessions / active connections on MySQL server](https://dataedo.com/kb/query/mysql/list-database-sessions)
+- [How-to fix Mysql slave after relay log corrupted](https://alexzeng.wordpress.com/2013/10/17/how-to-fix-mysql-slave-after-relay-log-corrupted/)
