@@ -2,9 +2,10 @@
 
 ## Proxmox server maintenance tasks
 
-- [Cheat sheet how to replace disk in ZFS pool](./proxmox_replace_disk_zfs.md)
-- [Cheat sheet how to use Proxmox cli](./proxmox_cli.md)
+- [Cheat sheets how to replace disk in ZFS pool](./proxmox_replace_disk_zfs.md)
+- [Cheat sheets how to use Proxmox cli](./proxmox_cli.md)
 - [Cheat sheets update Proxmox certs](./proxmox_update_certs.md)
+- [Cheat sheets how to install or upgrade Proxmox](./proxmox_install.md)
 
 ## Check status corosync
 
