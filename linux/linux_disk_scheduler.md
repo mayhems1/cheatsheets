@@ -34,6 +34,9 @@ This scheduler is suitable for fast devices, for example NVMe, SSD, or other low
 ```bash
 cat /sys/block/device/queue/scheduler
 # [mq-deadline] kyber bfq none
+# or
+lsblk -o +MODEL,SCHED
+lsblk -S -o +SCHED
 ```
 
 ## Runtime set disk scheduler
