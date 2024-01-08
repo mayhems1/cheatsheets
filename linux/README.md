@@ -5,3 +5,4 @@
 - [Linux mdadm RAID](./linux_mdadm.md)
 - [Linux journalctl](./linux_journalctl.md)
 - [Linux systemd](./linux_systemd.md)
+- [Linux working with DNS](./linux_dns.md)
