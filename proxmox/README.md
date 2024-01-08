@@ -36,6 +36,17 @@ qm image.ova <ID new VM> ./image.ovf <datastore name> --format qcow2
 qm kaspersky.ova 100 ./kaspersky.ovf local --format qcow2
 ```
 
+## Update certs
+
+```bash
+pvecm updatecerts --force
+
+# restart Proxmox services
+systemctl restart pve-cluster.service pvestatd.service pveproxy.service pvedaemon.service
+
+# check cert
+```
+
 ## Sources
 
 - [VM stuck/freeze after live migration](https://forum.proxmox.com/threads/vm-stuck-freeze-after-live-migration.114867/)
