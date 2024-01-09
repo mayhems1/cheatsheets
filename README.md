@@ -1,6 +1,6 @@
 # cheatsheets
 
-This repository contains cheat sheets that I periodically use.
+This repository holds cheat sheets that can be useful in work and which I use from time to time.
 
 ## [Cheatsheets for Linux](./linux/README.md)
 
@@ -13,3 +13,5 @@ This repository contains cheat sheets that I periodically use.
 ## [Cheatsheets for MySQL](./mysql/README.md)
 
 ## [Cheatsheets for MS SQL](./microsoft/sql_server/README.md)
+
+## [Cheatsheets for OpenSSL](./openssl/README.md)
