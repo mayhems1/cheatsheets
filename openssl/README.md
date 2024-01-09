@@ -3,9 +3,7 @@
 ## Using openssl to get the certificate from a server
 
 ```bash
-openssl s_client -showcerts -connect kolesa.group:443 </dev/null
-# or
-openssl s_client -connect kolesa.group:443 2>/dev/null </dev/null |  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'
+openssl s_client -showcerts -connect domain.com:443 </dev/null
 ```
 
 ## Convert pfx file to pem file
