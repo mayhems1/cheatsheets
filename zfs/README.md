@@ -9,7 +9,6 @@
 * [ZFS Data Scrubbing](#zfs-data-scrubbing)
 * [Autoextend ZFS pool](#autoextend-zfs-pool)
 * [Change disk in ZFS](#change-disk-in-zfs)
-* [Links](#links)
 
 ## ZFS Basic Terms
 
@@ -58,6 +57,12 @@ zpool status -vL rpool
 
 # List
 zpool list rpool
+
+# Get properties e.e. ashift
+zpool get properties ashift
+
+# All
+zpool get all
 ```
 
 ## How to add a drive to a ZFS mirror
@@ -138,6 +143,18 @@ zpool status -v
 
 ```bash
 arcstat
+
+arc_summary
+
+arc_summary rpool | grep zfs_vdev_schedule
+
+# Listing Pool-Wide I/O Statistics
+
+zpool iostat
+
+zpool iostat rpool 2
+
+zpool iostat tank 2
 ```
 
 ## Tune zfs_arc_min and zfs_arc_max
@@ -159,8 +176,41 @@ options zfs zfs_arc_max=8589934592
 update-initramfs -u
 ```
 
-## Links
+## Change/Modify ZFS sync settings
+
+sync=standard
+
+This is the default option. POSIX compliant behaviour.
+sync=disabled
+
+Synchronous requests are disabled.
+sync=always
+
+Every file system transaction is written and flushed to stable storage by a system call return.
+
+```bash
+# get all parameters
+
+zfs get all <pool name>
+
+# get sync for rpool
+zfs get sync rpool
+
+# get atime for rpool
+zfs get atime rpool
+
+zfs set sync=[standard|disabled|always] poolName
+# e.g.
+zfs set sync=standard rpool
+zfs set sync=disabled rpool
+zfs set sync=always rpool
+```
+
+## Sources
 
 * [Replacing Failed Drive in Zfs Zpool (on Proxmox)](https://edmondscommerce.github.io/replacing-failed-drive-in-zfs-zpool-on-proxmox/)
 * [Replacing ZFS system drives in Proxmox](https://www.oxcrag.net/2018/09/02/replacing-zfs-system-drives-in-proxmox/)
 * [ZFS: Tips and Tricks](https://pve.proxmox.com/wiki/ZFS:_Tips_and_Tricks#Replacing_a_failed_disk_in_the_root_pool)
+* [Viewing I/O Statistics for ZFS Storage Pools](https://docs.oracle.com/cd/E19253-01/819-5461/gammt/index.html)
+* [Using zpool iostat to monitor pool performance and health](https://klarasystems.com/articles/openzfs-using-zpool-iostat-to-monitor-pool-perfomance-and-health/)
+* [How to: Check/Change/Modify ZFS sync=standard/disabled/always](https://dannyda.com/2020/08/23/how-to-check-change-modify-zfs-syncstandard-disabled-always/)
