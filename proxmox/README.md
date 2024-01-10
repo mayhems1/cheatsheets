@@ -47,6 +47,14 @@ systemctl restart pve-cluster.service pvestatd.service pveproxy.service pvedaemo
 # check cert
 ```
 
+## Make iso file from file to use for a VM
+
+```bash
+# file name e.g. file1.txt
+
+mkisofs -o file1_cd.iso file1.txt
+```
+
 ## Sources
 
 - [VM stuck/freeze after live migration](https://forum.proxmox.com/threads/vm-stuck-freeze-after-live-migration.114867/)
