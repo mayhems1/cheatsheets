@@ -20,11 +20,11 @@ restrict 192.168.0.0 mask 255.255.0.0 nomodify notrap
 LOG NTP - /var/log/ntpstats/ntp
 
 ```bash
+# get status of NTP
 systemctl status ntp
 
+# restart NTP
 systemctl restart ntp
-
-
 ```
 
 ## Check NTP sync
