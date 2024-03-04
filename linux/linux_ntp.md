@@ -110,7 +110,6 @@ The first character displayed in the table (Select Field tally code) is a state 
 - "*" – The remote peer or server presently used as the primary reference;
 - "o" – PPS peer (when the prefer peer is valid). The actual system synchronization is derived from a pulse-per-second (PPS) signal, either indirectly via the PPS reference clock driver or directly via kernel interface.
 
-
 The refid can have the status values:
 
 - An IP address – The IP address of a remote peer or server
