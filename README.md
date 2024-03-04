@@ -12,6 +12,6 @@ This repository holds cheat sheets that can be useful in work and which I use fr
 
 ## [Cheatsheets for MySQL](./mysql/README.md)
 
-## [Cheatsheets for MS SQL](./microsoft/sql_server/README.md)
+## [Cheatsheets for Microsoft](./microsoft/README.md)
 
 ## [Cheatsheets for OpenSSL](./openssl/README.md)
