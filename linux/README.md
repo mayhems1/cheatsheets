@@ -7,3 +7,4 @@
 - [Linux systemd](./linux_systemd.md)
 - [Linux working with DNS](./linux_dns.md)
 - [Linux NTP - time, date and timezone](./linux_ntp.md)
+- [Linux and other OS ipmitool](./linux_ipmitool.md)
