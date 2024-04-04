@@ -77,6 +77,12 @@ SELECT * FROM information_schema.user_privileges;
 pt-show-grants --host localhost --user root --ask-pass
 ```
 
+## Other usefull commands
+
+```sql
+SELECT CURRENT_TIMESTAMP;
+```
+
 ## Try to fix Mysql slave after relay log corrupted
 
 ```sql
