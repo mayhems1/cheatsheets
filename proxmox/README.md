@@ -55,6 +55,43 @@ systemctl restart pve-cluster.service pvestatd.service pveproxy.service pvedaemo
 mkisofs -o file1_cd.iso file1.txt
 ```
 
+## CPU governor "performance"
+
+```bash
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+# switch to ondemand
+echo "ondemand" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+lscpu | grep MHz
+
+# or
+apt install cpupower
+
+cpupower frequency-info
+```
+
+## LVM thin pool
+
+```bash
+pvcreate /dev/md0
+vgcreate SSD-RAID-10 /dev/md0
+lvcreate -l 97%FREE -n SSD-RAID-10 SSD-RAID-10
+lvconvert --type thin-pool --poolmetadatasize 2048M --chunksize 64 SSD-RAID-10/SSD-RAID-10
+```
+
+## Custom CPU Model Configuration
+
+```conf
+# /etc/pve/virtual-guest/cpu-models.conf
+cpu-model: avx
+    flags +avx;+avx2
+    phys-bits host
+    hidden 0
+    hv-vendor-id proxmox
+    reported-model kvm64
+```
+
 ## Sources
 
 - [VM stuck/freeze after live migration](https://forum.proxmox.com/threads/vm-stuck-freeze-after-live-migration.114867/)
@@ -81,3 +118,11 @@ mkisofs -o file1_cd.iso file1.txt
 - [List of Useful Proxmox Command](https://www.hungred.com/tag/proxmox/)
 - [List of Useful Proxmox Command](https://www.hungred.com/how-to/server/list-of-useful-proxmox-command/)
 - [Proxmox destroyed one of my SSDs](https://www.reddit.com/r/Proxmox/comments/117jr2s/proxmox_destroyed_one_of_my_ssds/)
+- [Benchmark Proxmox Virtual Disk settings](https://blog.joeplaa.com/benchmark-proxmox-virtual-disk-settings/)
+- [Optimizing Proxmox: iothreads, aio, & io_uring](https://kb.blockbridge.com/technote/proxmox-aio-vs-iouring/)
+- [scaling-governor](https://raw.githubusercontent.com/tteck/Proxmox/main/misc/scaling-governor.sh)
+- [How do you squeeze max performance with software raid on NVME drives?](https://forum.proxmox.com/threads/how-do-you-squeeze-max-performance-with-software-raid-on-nvme-drives.127869/)
+- [Custom CPU Model Configuration](https://github.com/proxmox/pve-docs/blob/master/cpu-models.conf.adoc)
+- [Proxmox cluster with dishomogeneous cpu types](https://www.gandalfk7.it/posts/20210315_01_proxmox-cpu-flags/)
+- [Ansible for Networking - Part 6: MikroTik RouterOS](https://yetiops.net/posts/ansible-for-networking-part-6-mikrotik-routeros/)
+- [Routing from mikrotik two IP addresses to same gateway](https://serverfault.com/questions/577894/routing-from-mikrotik-two-ip-addresses-to-same-gateway)
