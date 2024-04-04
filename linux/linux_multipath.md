@@ -116,4 +116,5 @@ df -h
 - [3.2. Ignoring Local Disks when Generating Multipath Devices](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/ignore_localdisk_procedure)
 - [DM Multipath](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html-single/dm_multipath/index)
 - [Chapter 3. Setting Up DM-Multipath](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_setup)
+- [DM Multipath Configuration and Administration](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/dm_multipath/index)
 - [How to configure Device Mapper Multipath in RHEL 6, 7,8 & 9?](https://access.redhat.com/solutions/66281)
